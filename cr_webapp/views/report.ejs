@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <% include ./partials/bootstrap.ejs %>
+    <link rel="stylesheet" type="text/css" href="/styles/header.css">
+    <link rel="stylesheet" type="text/css" href="/styles/report.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <% include ./partials/header.ejs %>
+    <div role='main'>
+        <div class="jumbotron">
+            <h1>
+                <% include ./partials/summary.ejs %>
+            </h1>
+            <hr class="my-3">
+            <b>
+                <%= title %> &#8226
+                <%= report.case_report.date %></b>
+        </div>
+        <% if(status >= 400){ %>
+        <% include ./partials/error.ejs %>
+        <% } %>
+        <div class="container">
+            <div class="row align-items-center text-center">
+                <div class="col">
+                    <h6>type:
+                        <% include ./partials/crimeBadge.ejs %>
+                    </h6>
+                </div>
+                <div class="col">
+                    <h6>
+                        from:
+                        <% if(report.case_report.profile){ %>
+                        <%= report.case_report.profile %>
+                        <% } else { %>
+                        anonymous
+                        <% } %>
+                    </h6>
+                </div>
+                <div class="col">
+                    <%if(role == 3){%>
+                    <% if(report.is_assigned > 0 && report.case_report.isClosed == 0){ %>
+                    <h6>
+                        Assigned to:
+                        <%= assignee %>
+                    </h6>
+                    <% } else if (report.is_assigned == 0 && report.case_report.isClosed == 0){ %>
+                    <form action="<%=report.case_report.id%>/assign" method="POST">
+                        <select name="assignee" class="form-control-sm" style="display: inline;">
+                            <% assignee.forEach( lea => { %>
+                            <option>
+                                <%= lea %>
+                            </option>
+                            <% }) %>
+                        </select>
+                        <button type="submit" class="btn btn-success btn-sm pl-1" style="display: inline;">Assign</button>
+                    </form>
+                    <% } else {%>
+                    <form action="<%=report.case_report.id%>/reopen" method="POST">
+                        <button type="submit" class="btn btn-success" name="reopen" value="<%=report.case_report.id%>">Reopen</button>
+                    </form>
+                    <% } %>
+                    <% } else { %>
+                    <% if(report.case_report.isClosed == 0){ %>
+                    <form action="<%=report.case_report.id%>/resolve" method="POST">
+                        <button type="submit" class="btn btn-success" name="resolve" value="<%=report.case_report.id%>">Resolve</button>
+                    </form>
+                    <% } else {%>
+                    <form action="<%=report.case_report.id%>/reopen" method="POST">
+                        <button type="submit" class="btn btn-warning" name="reopen" value="<%=report.case_report.id%>">Reopen</button>
+                    </form>
+                    <% } %>
+                    <% } %>
+                </div>
+                <div class="col">
+                    <h5>
+                        <button type="button" class="btn btn-danger">Escalate</button>
+                    </h5>
+                </div>
+            </div>
+            <hr class="my-4">
+           
+            <div class="row">
+                <div class="col">
+                    <h5>Description</h5>
+                    <p>
+                        <%= report.case_report.description %>
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col">
+                    <h5>Evidence</h5>
+                </div>
+            </div>
+            <div class="evidence">
+                <div class="row">
+                    <% if(report.case_evidence[0].evidence == 'null'){ %>
+                    <div class='col'>
+                        <p>no evidence attached</p>
+                    </div>
+                    <% } else { %>
+                    <%report.case_evidence.forEach( evidence => {%>
+                    <div class="col-3">
+                        <img class="evidence-img" src="<%=evidence.evidence%>" alt="">
+                    </div>
+                    <% }) %>
+                    <% } %>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</body>
+<% include ./partials/scripts.ejs %>
+
+</html>

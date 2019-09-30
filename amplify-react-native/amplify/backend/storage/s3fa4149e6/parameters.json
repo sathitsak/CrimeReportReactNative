@@ -1,0 +1,9 @@
+{
+    "bucketName": "sign67cb05fde0894aad961a9b532d5a7a8b",
+    "authPolicyName": "s3_amplify_fa4149e6",
+    "unauthPolicyName": "s3_amplify_fa4149e6",
+    "authRoleName": "sign-20181012201555-authRole",
+    "unauthRoleName": "sign-20181012201555-unauthRole",
+    "authPermissions": "rw",
+    "unauthPermissions": "w"
+}

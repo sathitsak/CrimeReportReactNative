@@ -1,0 +1,15 @@
+<% if(report.case_report.type == "Murder"){ %>
+<span class="badge badge-danger">Murder</span>
+<%} else if(report.case_report.type == "Rape"){ %>
+<span class="badge badge-warning">Rape</span>
+<%} else if(report.case_report.type == "Theft"){ %>
+<span class="badge badge-secondary">Theft</span>
+<%} else if(report.case_report.type == "Assault"){ %>
+<span class="badge badge-dark">Assault</span>
+<%} else if(report.case_report.type == "Robbery"){ %>
+<span class="badge badge-secondary">Robbery</span>
+<%} else if(report.case_report.type == "Election Fraud"){ %>
+<span class="badge badge-info">Election Fraud</span>
+<%} else { %>
+    <span class="badge badge-light">Other</span>
+    <% } %>

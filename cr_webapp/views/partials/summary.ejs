@@ -1,0 +1,9 @@
+<span>
+    <%if(report.case_report.type){%>
+    <%= report.case_report.type %>
+    <% } else { %>
+    Other
+    <% } %>
+</span>
+
+<span>at <%= report.case_report.address %></span>

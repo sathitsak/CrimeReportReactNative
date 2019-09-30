@@ -1,0 +1,33 @@
+body {
+  font-size: .875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+[role="main"] {
+  padding-top: 66px; 
+}
+
+#dash {
+  position : absolute;
+  left : 0px;
+  top: 0px;
+  right: 0px; 
+  bottom: 0px; 
+  overflow: hidden; 
+  pointer-events: none;
+  z-index: -1;
+}
+
+#banner {
+  z-index : -1;
+}
+
+.side-brand {
+  padding-left : 15px;
+}
+

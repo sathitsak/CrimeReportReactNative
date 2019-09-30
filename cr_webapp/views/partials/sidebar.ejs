@@ -1,0 +1,78 @@
+<div class="wrapper">
+  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+      <ul class="nav flex-column">
+        <li class="nav-brand side-brand border-bottom">
+          <h4>Report Tools</h4>
+        </li>
+
+        <li>
+          <div id="view-select" class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary active">Assigned</button>
+            <button type="button" class="btn btn-secondary active">Unassigned</button>
+          </div>
+        </li>
+        <div class="sidebar-items">
+          <li class="filter-head">
+            <i class="fas fa-filter fa-ul fa-li"></i>
+            <h6>Crime Type</h6>
+          </li>
+          <li>
+            <div class="row sidebar-items">
+              <select class="form-control-sm">
+                <option>All</option>
+                <option>Murder</option>
+                <option>Assault</option>
+                <option>Rape</option>
+                <option>Theft </option>
+                <option>Election Fraud</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </li>
+          <li class="filter-head">
+            <i class="fas fa-filter fa-ul fa-li"></i>
+            <h6>Date</h6>
+          </li>
+          <li>
+            <form>
+              <div class="row sidebar-items col-xs-2">
+                <div class="form-group ">
+                  <label for="date-from" class="filters">Date from</label>
+                  <input type="date" class="form-control form-control-sm" id="date-from" placeholder="dd/mm/yyyy">
+                </div>
+              </div>
+              <div class="row sidebar-items col-xs-2">
+                <div class="form-group">
+                  <label for="date-to" class="filters">Date to</label>
+                  <input type="date" class="form-control form-control-sm" id="date-to" placeholder="dd/mm/yyyy">
+                </div>
+              </div>
+              <div class="row sidebar-items">
+                <button type="button" class="btn btn-success">Filter</button>
+              </div>
+            </form>
+          </li>
+          <li></li>
+          <li class="filter-head">
+            <i class="fas fa-search fa-ul fa-li"></i>
+            <h6>Search</h6>
+          </li>
+          <li>
+            <form method="get">
+              <div class="row sidebar-items">
+                <div class="form-group col-xs-2">
+                  <label for="search" class="filters">Case ID</label>
+                  <input type="text" class="form-control form-control-sm" id="search" placeholder="eg. 283519082" name="search">
+                </div>
+              </div>
+              <div class="row sidebar-items">
+                <button type="submit" class="btn btn-success">Search</button>
+              </div>
+            </form>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </nav>
+</div>

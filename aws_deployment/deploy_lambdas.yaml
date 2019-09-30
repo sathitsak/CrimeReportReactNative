@@ -1,0 +1,318 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: "AWS::Serverless-2016-10-31"
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  signin:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.AuthenticateHandler::signIn"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /auth/signin
+            Method: POST
+  SignOut:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.AuthenticateHandler::signOut"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /auth/signout
+            Method: POST
+  signup:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.AuthenticateHandler::signUp"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /auth/signup
+            Method: POST
+  updateprofile:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.AuthenticateHandler::updateProfile"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 59
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /auth/update
+            Method: PUT
+  CaseAssign:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.ChiefHandler::assign"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/chief/assign
+            Method: POST
+  CaseAssignGet:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.ChiefHandler::assigned"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/chief/assign
+            Method: GET
+  ChiefLEAGet:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.ChiefHandler::getLEA"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 128
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/chief/lea
+            Method: GET
+  CaseCommentCreate:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CaseCommentHandler::create"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/comment
+            Method: POST
+  CaseCommentGet:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CaseCommentHandler::get"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/comment
+            Method: GET
+  CaseReopen:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CaseHandler::reopen"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/reopen
+            Method: PUT
+  CaseCreate:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CaseHandler::create"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/report
+            Method: POST
+        Api2:
+          Type: Api
+          Properties:
+            Path: /MyResource
+            Method: ANY
+  CasefindCaseById:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CaseHandler::findCaseById"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/report
+            Method: GET
+  CaseGet:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CaseHandler::getCases"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/report/all
+            Method: GET
+  CaseArchive:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CaseHandler::getClosedCases"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/archive
+            Method: GET
+  CaseResolve:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CaseHandler::resolve"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/resolve
+            Method: PUT
+  casegetstatistics:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CaseHandler::getStatistics"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /case/statistics
+            Method: GET
+  CrimeTypeCreate:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CrimeTypeHandler::create"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /crimetype
+            Method: POST
+  CrimeTypefindById:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CrimeTypeHandler::findById"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /crimetype
+            Method: GET
+  CrimeTypefindAll:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Handler: "au.edu.unimelb.crbilby.handler.CrimeTypeHandler::findAll"
+      Runtime: java8
+      CodeUri: s3://deployment-bilby-lambdas-2018/CRServer-1.0-SNAPSHOT.jar
+      Description: ""
+      MemorySize: 512
+      Timeout: 30
+      Role: "arn:aws:iam::872848220989:role/lambda_basic_execution"
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
+        Api2:
+          Type: Api
+          Properties:
+            Path: /crimetype/all
+            Method: GET

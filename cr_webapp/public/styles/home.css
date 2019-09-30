@@ -1,0 +1,23 @@
+.table-row{
+    cursor:pointer;
+    
+}
+
+.table tbody td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.assigntd {
+    text-align : center;
+}
+
+.error {
+    padding-top : 70px;
+}
+
+.evidence-badge{
+    text-align : center;
+}

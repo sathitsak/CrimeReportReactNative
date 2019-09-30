@@ -1,0 +1,70 @@
+<div class="container pt-4">
+    <% if (reports.length > 0) {%>
+    <div class="table-responsive">
+        <table id="reportList" class="table table-hover">
+            <thead class="thead-secondary">
+                <tr>
+                    <th class="col-xs-1">Type</th>
+                    <th class="col-xs-5">Address</th>
+                    <th class="col-xs-2">Time</th>
+                    <th class="col-xs-2">Evidence</th>
+                    <% if(role == 3){ %>
+                    <th class="col-xs-1">Assigned</th>
+                    <% } else { %>
+                    <th class="col-xs-1">Status</th>
+                    <% } %>
+                </tr>
+            </thead>
+            <tbody>
+                <% reports.forEach(report => { %>
+
+                <tr class="table-row" 
+                data-href="/<%=title.charAt(0).toLowerCase() + title.slice(1)%>/<%=report.case_report.id%>">
+                    <td width="10%">
+                        <% include ./crimeBadge.ejs %>
+                    </td>
+
+                    <td width="50%">
+
+                        <%include ./summary.ejs%>
+
+                    <td width="30%">
+                        <%= report.case_report.date %>
+                    </td>
+
+                    <td width="20%" class="evidence-badge">
+                        <% if(report.case_evidence[0].evidence != 'null'){ %>
+                        <span class="badge badge-success">
+                            evidence</span>
+                        <% } else { %>
+                        <span class="badge badge-light">no evidence</span>
+                        <% } %>
+                    </td>
+                    <td width="10%" class="assigntd">
+                        <% if(role == 3){ %>
+                        <% if(report.is_assigned){%>
+                            <span class="badge badge-success">assigned</span>
+                        <% } else {%>
+                            <span class="badge badge-secondary">unassigned</span>
+                        <% } %>
+                        <% } else { %>
+                            <% if(report.case_report.isClosed){%>
+                                <span class="badge badge-success">closed</span>
+                            <% } else {%>
+                                <span class="badge badge-warning">open</span>
+                            <% } %>
+                        <% } %>
+                     </td>
+
+                </tr>
+
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <% } else {%>
+    <div class="alert alert-primary" role="alert">
+        You have no assigned cases
+    </div>
+    <% } %>
+</div>

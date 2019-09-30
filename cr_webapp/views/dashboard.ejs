@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <% include ./partials/bootstrap.ejs %>
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/home.css">
+    <link rel="stylesheet" type="text/css" href="/styles/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/header.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/js/tableScript.js"></script>
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+
+
+<body>
+    <!-- header parital -->
+    <% include ./partials/header.ejs %>
+    <div class="row">
+        <!-- sidebar partial -->
+        <% include ./partials/sidebar.ejs %>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap border-bottom">
+                <!-- page title banner -->
+                <h1 class="h2">
+                    <%= title %>
+                </h1>
+            </div>
+            <div>
+                <% if(status >= 400){ %>
+                <% include ./partials/error.ejs %>
+                <% } else { %>
+                <% include ./partials/reports.ejs %>
+                <% } %>
+            </div>
+
+        </main>
+    </div>
+
+
+
+
+</body>
+<% include ./partials/scripts.ejs%>
+
+</html>
