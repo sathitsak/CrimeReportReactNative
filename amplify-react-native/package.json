@@ -12,7 +12,7 @@
     "@expo/vector-icons": "^6.3.1",
     "aws-amplify": "^1.1.6",
     "aws-amplify-react-native": "^2.0.6",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "expo": "^30.0.1",
     "mime-types": "^2.1.20",
     "native-base": "^2.8.0",
